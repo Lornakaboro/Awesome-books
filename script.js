@@ -77,4 +77,13 @@ if (localStorage.getItem('storedBooks') == null) {
   getFromLocalStorage();
 }
 
+//Add event listener to add button
 
+const addBtn = document.getElementById('addButton');
+addBtn.addEventListener('click', () => {
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  bookObj(title.value, author.value);
+  addToLocalStorage();
+  displayBook();
+});
