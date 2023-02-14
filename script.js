@@ -4,7 +4,7 @@ let bookList = [];
 
 //generating bookobject
 
-function bookObj(bookTitle, authorName) {
+function bookObject(bookTitle, authorName) {
   const books = {
     title: bookTitle,
     author: authorName,
@@ -15,12 +15,12 @@ function bookObj(bookTitle, authorName) {
 
 //Add books to local storage
 
-function addToLocalStorage() {
+function addBook() {
   const bookArr = JSON.stringify(bookList);
   localStorage.setItem('storedBooks', bookArr);
 }
 
-// to remove books
+//sort input by index
 
 function booksFilter(index) {
     bookList = bookList.filter((book) => book !== bookList[index]);
@@ -28,23 +28,23 @@ function booksFilter(index) {
 
 //UI to display books
 
-function displayBook() {
-  const addedBooks = document.getElementById('books');
-  addedBooks.innerHTML = '';
+function displayBooks() {
+  const getBooks = document.getElementById('books');
+  getBooks.innerHTML = '';
   for (let i = 0; i < bookList.length; i += 1) {
-    const container = document.createElement('div');
-    container.classList.add('book');
-    addedBooks.appendChild(container);
+    const bookContainer = document.createElement('div');
+    bookContainer.classList.add('book-item');
+    getBooks.appendChild(bookContainer);
 
     const bookTitle = document.createElement('p');
     bookTitle.classList.add('title');
     bookTitle.textContent = bookList[i].title;
-    container.appendChild(bookTitle);
+    bookContainer.appendChild(bookTitle);
 
     const bookAuthor = document.createElement('p');
     bookAuthor.classList.add('author');
     bookAuthor.textContent = bookList[i].author;
-    container.appendChild(bookAuthor);
+    bookContainer.appendChild(bookAuthor);
 
     const removeButton = document.createElement('button');
     removeButton.classList.add('remove');
@@ -52,29 +52,29 @@ function displayBook() {
 
     removeButton.onclick = () => {
       booksFilter(i);
-      addToLocalStorage();
-      displayBook();
+      addBook();
+      displayBooks();
     };
 
-    container.appendChild(removeButton);
+    bookContainer.appendChild(removeButton);
 
     const line = document.createElement('hr');
-    container.appendChild(line);
+    bookContainer.appendChild(line);
   }
 }
 
 //get item form local storage
 
-function getFromLocalStorage() {
+function getBookFromLocalStorage() {
   const bookArr = localStorage.getItem('storedBooks');
   bookList = JSON.parse(bookArr);
-  displayBook();
+  displayBooks();
 }
 
 if (localStorage.getItem('storedBooks') == null) {
-  addToLocalStorage();
+  addBook();
 } else {
-  getFromLocalStorage();
+  getBookFromLocalStorage();
 }
 
 //Add event listener to add button
@@ -83,7 +83,7 @@ const addBtn = document.getElementById('addButton');
 addBtn.addEventListener('click', () => {
   const title = document.getElementById('title');
   const author = document.getElementById('author');
-  bookObj(title.value, author.value);
-  addToLocalStorage();
-  displayBook();
+  bookObject(title.value, author.value);
+  addBook();
+  displayBooks();
 });
