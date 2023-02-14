@@ -138,11 +138,11 @@ You can view the Loom video of the page on index.html
 
 > Mention all of the collaborators of this project.
 
-👤 **Author1**
+👤 **LornaKaboro**
 - GitHub: [@Lornakaboro](https://github.com/Lornakaboro)
 
 
- **Author2**
+ **YosefGeda**
 - GitHub: [@yosefgeda](https://github.com/yosefgeda)
 
 
