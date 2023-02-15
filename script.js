@@ -1,88 +1,93 @@
-// declare an empty array to store book list
-let bookList = [];
+// Grab items from html
 
-// generating bookobject
+const title = document.getElementById('title');
+const author = document.getElementById('author');
+const addBtn = document.getElementById('addButton');
+const addedBooks = document.getElementById('books');
+const bookHide = document.querySelector('.book-hide');
+// create local storage
 
-function bookObject(bookTitle, authorName) {
-  const books = {
-    title: bookTitle,
-    author: authorName,
-  };
+class Storage {
+  static addToStorage () {
+    let storage = localStorage.setItem('books', JSON.stringify(bookList));
+    return storage;
+  }
 
-  bookList.push(books);
-}
-
-// Add books to local storage
-
-function addBook() {
-  const bookArr = JSON.stringify(bookList);
-  localStorage.setItem('storedBooks', bookArr);
-}
-
-// sort input by index
-
-function booksFilter(index) {
-  bookList = bookList.filter((book) => book !== bookList[index]);
-}
-
-// UI to display books
-
-function displayBooks() {
-  const getBooks = document.getElementById('books');
-  getBooks.innerHTML = '';
-  for (let i = 0; i < bookList.length; i += 1) {
-    const bookContainer = document.createElement('div');
-    bookContainer.classList.add('book-item');
-    getBooks.appendChild(bookContainer);
-
-    const bookTitle = document.createElement('p');
-    bookTitle.classList.add('title');
-    bookTitle.textContent = bookList[i].title;
-    bookContainer.appendChild(bookTitle);
-
-    const bookAuthor = document.createElement('p');
-    bookAuthor.classList.add('author');
-    bookAuthor.textContent = bookList[i].author;
-    bookContainer.appendChild(bookAuthor);
-
-    const removeButton = document.createElement('button');
-    removeButton.classList.add('remove');
-    removeButton.textContent = 'remove';
-
-    removeButton.onclick = () => {
-      booksFilter(i);
-      addBook();
-      displayBooks();
-    };
-
-    bookContainer.appendChild(removeButton);
-
-    const line = document.createElement('hr');
-    bookContainer.appendChild(line);
+  static getStorage () {
+    let storage = localStorage.getItem('books') === null ? [] : JSON.parse(localStorage.getItem('books'));
+    
+    return storage;
   }
 }
 
-// get item form local storage
+let bookList = Storage.getStorage();
 
-function getBookFromLocalStorage() {
-  const bookArr = localStorage.getItem('storedBooks');
-  bookList = JSON.parse(bookArr);
-  displayBooks();
+//Add event listener to add button
+
+
+
+let id;
+addBtn.addEventListener('click', (e) => {
+    if(title.value != '' && author.value != 0){
+        e.preventDefault();
+        id = Math.floor(Math.random()*10000);
+        const bookObj = new Book (`"${title.value}" by`, `, ${author.value}`, id);
+        bookList = [...bookList, bookObj];
+        UI.displayData();
+        UI.removeBook ();
+        UI.clearValue ();
+        
+        Storage.addToStorage(bookList);
+      
+    }
+});
+
+
+// Create Classes
+
+class Book {
+  constructor (titleOfBook, authorOfBook, id) {
+    this.titleOfBook = titleOfBook;
+    this.authorOfBook = authorOfBook;
+    this.id = id;
+  }
 }
 
-if (localStorage.getItem('storedBooks') == null) {
-  addBook();
-} else {
-  getBookFromLocalStorage();
+class UI {
+  static displayData () {
+    let displayData = bookList.map((item) => {
+      return `
+      <div class='individual-book'>
+        <p>${item.titleOfBook}</p>
+        <p>${item.authorOfBook}</p>
+        <button class='rmv-btn'data-id=${item.id}>Remove</button>
+        <hr>
+    </div>`
+    });
+    addedBooks.innerHTML = (displayData).join('');
+  }
+  static clearValue () {
+    title.value = '';
+    author.value = '';
+  }
+  static removeBook () {
+    addedBooks.addEventListener('click', (e) => {
+      if(e.target.classList.contains('rmv-btn')) {
+        e.target.parentElement.remove();
+      }
+      let rmvBtn = e.target.dataset.id;
+      UI.removeBookArray(rmvBtn);
+      //Storage.addToStorage(bookList);
+    });
+  }
+
+  static removeBookArray (id) {
+    bookList = bookList.filter((item) => item.id !== +id);
+    Storage.addToStorage(bookList);
+  }
 }
 
-// Add event listener to add button
-
-const addBtn = document.getElementById('addButton');
-addBtn.addEventListener('click', () => {
-  const title = document.getElementById('title');
-  const author = document.getElementById('author');
-  bookObject(title.value, author.value);
-  addBook();
-  displayBooks();
+window.addEventListener('DOMContentLoaded', () => {
+  UI.displayData();
+  UI.removeBook();
 });
