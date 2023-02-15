@@ -110,3 +110,29 @@
     border-radius: 3px;
     box-shadow: 2px 2px 3px black;
 }
+
+.contact-hide {
+  display: none;
+}
+
+.contact-details {
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.contact-info {
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+.footer {
+  border: 2px solid rgb(51, 49, 49);
+  margin-left: 2%;
+  padding: 1% 2%;
+  margin-top: 5% ;
+  margin-right: 2%;
+  /* position: fixed; */
+  /* bottom: 5; */
+  margin-bottom: auto;
+  width: 100%;
+}
