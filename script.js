@@ -1,3 +1,4 @@
+
 // Grab items from html
 
 const title = document.getElementById('title');
@@ -91,3 +92,5 @@ window.addEventListener('DOMContentLoaded', () => {
   UI.displayData();
   UI.removeBook();
 });
+
+
