@@ -10,13 +10,13 @@
     align-items: center;
     justify-content: flex-end;
     padding: 1% 10%;
+    border: 1px solid #000;
     
 }
 
 .nav-links {
     display: flex;
     list-style: none;
-    /* gap: 20px;    */
 }
 
 .logo {
@@ -131,8 +131,6 @@
   padding: 1% 2%;
   margin-top: 5% ;
   margin-right: 2%;
-  /* position: fixed; */
-  /* bottom: 5; */
   margin-bottom: auto;
   width: 100%;
 }
