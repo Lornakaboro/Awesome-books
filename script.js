@@ -1,88 +1,80 @@
-// declare an empty array to store book list
-let bookList = [];
+// Grab items from html
 
-// generating bookobject
+const title = document.getElementById('title');
+const author = document.getElementById('author');
+const addBtn = document.getElementById('addButton');
+const addedBooks = document.getElementById('books');
+let bookList;
+// Create Classes
 
-function bookObject(bookTitle, authorName) {
-  const books = {
-    title: bookTitle,
-    author: authorName,
-  };
+class Book {
+  constructor(titleOfBook, authorOfBook, id) {
+    this.titleOfBook = titleOfBook;
+    this.authorOfBook = authorOfBook;
+    this.id = id;
+  }
 
-  bookList.push(books);
-}
+  static displayData() {
+    const displayData = bookList.map((item) => `
+          <div class='individual-book'>
+            <p>${item.titleOfBook}</p>
+            <p>${item.authorOfBook}</p>
+            <button class='rmv-btn'data-id=${item.id}>Remove</button>
+            <hr>
+        </div>`);
+    addedBooks.innerHTML = (displayData).join('');
+  }
 
-// Add books to local storage
+  static clearValue() {
+    title.value = '';
+    author.value = '';
+  }
 
-function addBook() {
-  const bookArr = JSON.stringify(bookList);
-  localStorage.setItem('storedBooks', bookArr);
-}
+  static removeBook() {
+    addedBooks.addEventListener('click', (e) => {
+      if (e.target.classList.contains('rmv-btn')) {
+        e.target.parentElement.remove();
+      }
+      const rmvBtn = e.target.dataset.id;
+      Book.removeBookArray(rmvBtn);
+    });
+  }
 
-// sort input by index
+  static removeBookArray(id) {
+    bookList = bookList.filter((item) => item.id !== +id);
+    Book.addToStorage(bookList);
+  }
 
-function booksFilter(index) {
-  bookList = bookList.filter((book) => book !== bookList[index]);
-}
+  static addToStorage() {
+    const storage = localStorage.setItem('books', JSON.stringify(bookList));
+    return storage;
+  }
 
-// UI to display books
-
-function displayBooks() {
-  const getBooks = document.getElementById('books');
-  getBooks.innerHTML = '';
-  for (let i = 0; i < bookList.length; i += 1) {
-    const bookContainer = document.createElement('div');
-    bookContainer.classList.add('book-item');
-    getBooks.appendChild(bookContainer);
-
-    const bookTitle = document.createElement('p');
-    bookTitle.classList.add('title');
-    bookTitle.textContent = bookList[i].title;
-    bookContainer.appendChild(bookTitle);
-
-    const bookAuthor = document.createElement('p');
-    bookAuthor.classList.add('author');
-    bookAuthor.textContent = bookList[i].author;
-    bookContainer.appendChild(bookAuthor);
-
-    const removeButton = document.createElement('button');
-    removeButton.classList.add('remove');
-    removeButton.textContent = 'remove';
-
-    removeButton.onclick = () => {
-      booksFilter(i);
-      addBook();
-      displayBooks();
-    };
-
-    bookContainer.appendChild(removeButton);
-
-    const line = document.createElement('hr');
-    bookContainer.appendChild(line);
+  static getStorage() {
+    const storage = localStorage.getItem('books') === null ? [] : JSON.parse(localStorage.getItem('books'));
+    return storage;
   }
 }
-
-// get item form local storage
-
-function getBookFromLocalStorage() {
-  const bookArr = localStorage.getItem('storedBooks');
-  bookList = JSON.parse(bookArr);
-  displayBooks();
-}
-
-if (localStorage.getItem('storedBooks') == null) {
-  addBook();
-} else {
-  getBookFromLocalStorage();
-}
+bookList = Book.getStorage();
 
 // Add event listener to add button
 
-const addBtn = document.getElementById('addButton');
-addBtn.addEventListener('click', () => {
-  const title = document.getElementById('title');
-  const author = document.getElementById('author');
-  bookObject(title.value, author.value);
-  addBook();
-  displayBooks();
+let id;
+addBtn.addEventListener('click', (e) => {
+  if (title.value !== '' && author.value !== 0) {
+    e.preventDefault();
+    id = Math.floor(Math.random() * 10000);
+    const bookObj = new Book(`"${title.value}" by`, `, ${author.value}`, id);
+    bookList = [...bookList, bookObj];
+    Book.displayData();
+    Book.removeBook();
+    Book.clearValue();
+
+    Book.addToStorage(bookList);
+  }
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+  Book.displayData();
+  Book.removeBook();
 });

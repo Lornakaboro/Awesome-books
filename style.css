@@ -1,3 +1,68 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.main-title {
+  text-align: center;
+  margin-top: 5%;
+}
+
+.top-line {
+  display: block;
+  height: 3px;
+  background-color: rgb(41, 39, 39);
+  width: 10%;
+  border-top-right-radius: 100%;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10%;
+  text-align: right;
+}
+
+.books {
+  margin: auto;
+  margin-top: 5%;
+  border: 2px solid rgb(51, 49, 49);
+  width: 50%;
+}
+
+.individual-book {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 2%;
+}
+
+.individual-book:nth-child(odd) {
+  background-color: rgb(186, 190, 190);
+}
+
+.rmv-btn {
+  margin-left: auto;
+  padding: 1%;
+  border-color: rgba(65, 63, 63, 100);
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px black;
+}
+
+.my-form input {
+  border: 2px solid rgb(51, 50, 50);
+  border-radius: 3px;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.my-form button {
+  padding: 3px;
+  border-color: rgba(65, 63, 63, 100);
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px black;
 }
