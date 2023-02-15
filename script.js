@@ -78,3 +78,35 @@ window.addEventListener('DOMContentLoaded', () => {
   Book.displayData();
   Book.removeBook();
 });
+
+// navigation
+
+const formContainer = document.querySelector('.form-container');
+const lists = document.querySelector('.lists');
+const addNew = document.querySelector('.add-new');
+const mainTitle = document.querySelector('.main-title');
+const mainTitleHidden = document.querySelector('.main-title-hidden');
+const logo = document.querySelector('.logo');
+
+formContainer.style.display = 'none';
+
+logo.addEventListener('click', () => {
+  mainTitle.style.display = 'block';
+  addedBooks.style.display = 'block';
+  formContainer.style.display = 'none';
+  mainTitle.textContent = 'All awesome books';
+});
+
+
+lists.addEventListener('click', () => {
+  mainTitle.style.display = 'block';
+  addedBooks.style.display = 'block';
+  formContainer.style.display = 'none';
+  mainTitle.textContent = 'All awesome books';
+});
+
+addNew.addEventListener('click', () => {
+  mainTitleHidden.style.display = 'none';
+  addedBooks.style.display = 'none';
+  formContainer.style.display = 'flex';
+})

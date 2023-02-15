@@ -127,7 +127,7 @@ To run the project on the html file run it through liveserver.
 
 
 ### Deployment
-You can view the Loom video of the page on index.html
+You can view the page on index.html
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
