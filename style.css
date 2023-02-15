@@ -1,114 +1,113 @@
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .nav-bar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: 1% 10%;
-    border: 1px solid #000;
-    
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1% 10%;
+  border: 1px solid #000;
 }
 
 .nav-links {
-    display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
 }
 
 .logo {
-    margin-right: auto;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: 20px;
+  margin-right: auto;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .nav-links li a {
-    text-decoration: none;
-    color: black;
-    padding: 0 10px;
-    margin: 0;
-    font-size: 17px;
+  text-decoration: none;
+  color: black;
+  padding: 0 10px;
+  margin: 0;
+  font-size: 17px;
 }
 
 .nav-links li a:active {
-    color: brown;
+  color: brown;
 }
 
 .last-item {
-    border-right: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .main-title {
-    text-align: center;
-    margin-top: 5%;
+  text-align: center;
+  margin-top: 5%;
 }
 
 .top-line {
-    display: block;
-    height: 3px;
-    background-color: rgb(41, 39, 39);
-    width: 10%;
-    border-top-right-radius: 100%;
+  display: block;
+  height: 3px;
+  background-color: rgb(41, 39, 39);
+  width: 10%;
+  border-top-right-radius: 100%;
 }
 
 .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 5%;
-    margin-bottom: 10%;
-    text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  text-align: right;
 }
 
 .books {
-    margin: auto;
-    margin-top: 5%;
-    border: 2px solid rgb(51, 49, 49);
-    width: 50%;
+  margin: auto;
+  margin-top: 5%;
+  border: 2px solid rgb(51, 49, 49);
+  width: 50%;
 }
 
 .individual-book {
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    padding: 2%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 2%;
 }
 
 .individual-book:nth-child(odd) {
-    background-color: rgb(186, 190, 190);
+  background-color: rgb(186, 190, 190);
 }
 
 .rmv-btn {
-    margin-left: auto;
-    padding: 1%;
-    border-color: rgba(65, 63, 63,100);
-    border-radius: 3px;
-    box-shadow: 2px 2px 3px black;
+  margin-left: auto;
+  padding: 1%;
+  border-color: rgba(65, 63, 63, 100);
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px black;
 }
 
 .my-form {
-    margin-top: 5%;
+  margin-top: 5%;
 }
 
 .my-form input {
-    border: 2px solid rgb(51, 50, 50);
-    border-radius: 3px;
-    padding: 5px;
-    font-weight: bold;
+  border: 2px solid rgb(51, 50, 50);
+  border-radius: 3px;
+  padding: 5px;
+  font-weight: bold;
 }
 
 .my-form button {
-    padding: 3px;
-    border-color: rgba(65, 63, 63,100);
-    border-radius: 3px;
-    box-shadow: 2px 2px 3px black;
+  padding: 3px;
+  border-color: rgba(65, 63, 63, 100);
+  border-radius: 3px;
+  box-shadow: 2px 2px 3px black;
 }
 
 .contact-hide {
@@ -129,7 +128,7 @@
   border: 2px solid rgb(51, 49, 49);
   margin-left: 2%;
   padding: 1% 2%;
-  margin-top: 5% ;
+  margin-top: 5%;
   margin-right: 2%;
   margin-bottom: auto;
   width: 100%;

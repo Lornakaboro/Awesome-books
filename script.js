@@ -87,8 +87,8 @@ const addNew = document.querySelector('.add-new');
 const mainTitle = document.querySelector('.main-title');
 const mainTitleHidden = document.querySelector('.main-title-hidden');
 const logo = document.querySelector('.logo');
-const contact = document.querySelector('.contacts')
-const contacts = document.querySelector('.contact-info')
+const contact = document.querySelector('.contacts');
+const contacts = document.querySelector('.contact-info');
 
 formContainer.style.display = 'none';
 
@@ -98,7 +98,6 @@ logo.addEventListener('click', () => {
   formContainer.style.display = 'none';
   mainTitle.textContent = 'All awesome books';
 });
-
 
 lists.addEventListener('click', () => {
   mainTitle.style.display = 'block';
@@ -113,13 +112,10 @@ addNew.addEventListener('click', () => {
   addedBooks.style.display = 'none';
   formContainer.style.display = 'flex';
   contacts.style.display = 'none';
-  
-})
+});
 
 contact.addEventListener('click', () => {
   contacts.style.display = 'block';
   formContainer.style.display = 'none';
   mainTitleHidden.style.display = 'none';
-  
-
-})
+});
