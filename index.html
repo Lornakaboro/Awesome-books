@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <h2 class="main-title">All awesome Books</h2>
+
+        <nav class="nav-bar">
+                <a class="logo" href="#">Awesome Books</a>
+            <ul class="nav-links">               
+                <li><a class="last-item lists" href="#">List </a></li>
+                <li><a class="last-item add-new" href="#">Add New</a></li>
+                <li ><a class="contacts" href="#">Contacts</a></li>
+            </ul>
+        </nav>
+
+        <h2 class="main-title main-title-hidden">All awesome Books</h2>
         <div class="books" id="books">
         <!-- .section created dynamically-->
         </div>
@@ -21,6 +31,22 @@
                     <button type="submit" id="addButton">Add</button>
             </form>
         </div>
+
+        <div class="contact-info  contact-hide" id="contact-info">
+            <h2 class="main-title">Contact Information</h2>
+            <div class="contact-details">
+                <p class="contact-description">Do you have any question or you just want to say "Hello"?, <br>
+                    You can reach out to us!</p>
+                <ul class="contact-info">
+                    <li class="contact-item">Our e-mail@mail.com</li>
+                    <li class="contact-item">Our phone number: 0043586534422</li>
+                    <li class="contact-item"> Our address: Streetname 22,84503 City, Country</li>
+                </ul>
+            </div>
+        </div>
+        <footer class="footer">
+            <p class="copyright"> Copyright ...</p>
+        </footer>
         <script src="./script.js"></script>
     
 </body>

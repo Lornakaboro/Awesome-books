@@ -1,7 +1,45 @@
+
 * {
   margin: 0;
   padding: 0;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1% 10%;
+  border: 1px solid #000;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.logo {
+  margin-right: auto;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: black;
+  padding: 0 10px;
+  margin: 0;
+  font-size: 17px;
+}
+
+.nav-links li a:active {
+  color: brown;
+}
+
+.last-item {
+  border-right: 1px solid black;
 }
 
 .main-title {
@@ -23,7 +61,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-top: 10%;
+  margin-top: 5%;
+  margin-bottom: 10%;
   text-align: right;
 }
 
@@ -53,6 +92,10 @@
   box-shadow: 2px 2px 3px black;
 }
 
+.my-form {
+  margin-top: 5%;
+}
+
 .my-form input {
   border: 2px solid rgb(51, 50, 50);
   border-radius: 3px;
@@ -65,4 +108,28 @@
   border-color: rgba(65, 63, 63, 100);
   border-radius: 3px;
   box-shadow: 2px 2px 3px black;
+}
+
+.contact-hide {
+  display: none;
+}
+
+.contact-details {
+  margin-left: 10%;
+  margin-top: 2%;
+}
+
+.contact-info {
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+.footer {
+  border: 2px solid rgb(51, 49, 49);
+  margin-left: 2%;
+  padding: 1% 2%;
+  margin-top: 5%;
+  margin-right: 2%;
+  margin-bottom: auto;
+  width: 100%;
 }
